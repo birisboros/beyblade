@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Exercises</title>
+    <style>
+        html{
+            width: 100vw;
+            height: 100vh;
+            background-image: url(beyblade_arthur.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        body{
+            width: 100%;
+            display:flex;
+            margin: auto;
+            margin-top: 20vh;
+        }
+        @keyframes anitex {
+            from {transform: scale(0,0);}
+            to {transform: scale(1,1);}
+        }
+        .mudarespons{
+            background-color: rgba(0, 0, 0, 0.558);
+            width: 30vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            } 
+        #nome1new, #nome2new{
+            background-color: rgba(0, 0, 0, 0.504);
+            display: block;
+            width:20vw;
+            font-size: 5em;
+            color: red;
+            text-shadow: 2px 2px 5px orange;
+            padding: 5vw;
+            padding-top: 0em;
+            animation-duration: 2s;
+            animation-fill-mode: linear both;
+            
+            margin:auto;
+      
+        }
+
+        .pontos{
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            width:20vw;
+            font-size: 10em;
+            color: red;
+            text-shadow: 2px 2px 5px orange;
+            background-color: rgba(0, 0, 0, 0.408);
+            padding-top: 0em;
+            border:2px solid red;
+            
+            
+            
+        }
+        .vs{
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            width:20vw;
+            font-size: 4em;
+            color: red;
+            text-shadow: 2px 2px 5px orange;
+            border:2px solid red;
+            padding: 1em;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.243);
+        }
+        #nome1, #nome2{
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            color: red;
+            text-shadow: 2px 2px 5px orange;
+            padding-top: 5em;
+            background-color: rgba(0, 0, 0, 0.558);
+        }
+        label{
+            font-size:3em;
+        }
+        
+        button{
+            background-color: orange;
+            width: 10vh;
+        }
+        @media (max-width:1000px) {
+        html{
+            margin: 0px;
+            height: 100vh;
+            overflow: hidden;
+        }
+        body{
+            
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            margin: 0vh;
+            }
+        .mudarespons{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            } 
+        #nome1new, #nome2new{
+            
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            width:100vw;
+            font-size: 5em;
+            color: red;
+            text-shadow: 2px 2px 5px orange;
+            padding: 0vw;
+            margin: 5vh 0vh;
+            }       
+        }
+    </style>
+</head>
+<body>
+    <div id="nome1">
+        <label for="nome1">Nome:</label>
+        <input type="text" name="nome1" id="nome1text">
+        <button onclick="mudaTexto1()">OK</button>
+    </div>
+    
+    <div id="nome1new"></div>
+    
+    <div class="mudarespons">
+    <div class="pontos">
+    <div id="pont1">0</div>
+    <button onclick="ponto1()">+</button>
+    </div>
+    
+    <div class="vs">VS</div>
+    
+    <div class="pontos">
+    <div id="pont2">0</div>
+    <button onclick="ponto2()">+</button>
+    </div>
+    </div>
+
+    <div id="nome2new"></div>
+    
+    <div id="nome2">
+        <label for="nome2">Nome:</label>
+        <input type="text" name="nome2" id="nome2text">
+        <button onclick="mudaTexto2()">OK</button>
+    </div>
+    
+    <script>
+        const add = (function () {
+        let counter = 0;
+        return function () {counter += 1; return counter;}
+        })();
+        const add2 = (function () {
+        let counter = 0;
+        return function () {counter += 1; return counter;}
+        })();
+
+        function mudaTexto1() {
+            var nome1= document.getElementById("nome1text").value;
+            var apaga1= document.getElementById("nome1").style="display:none;";
+            document.getElementById("nome1new").innerHTML = nome1.toUpperCase();
+            document.getElementById("nome1new").style= "animation-name: anitex;";
+        }
+        function mudaTexto2() {
+            
+            var nome2= document.getElementById("nome2text").value;
+            var apaga2= document.getElementById("nome2").style="display:none;";
+            document.getElementById("nome2new").innerHTML = nome2.toUpperCase();
+            document.getElementById("nome2new").style= "animation-name: anitex;";
+           }
+          
+        function ponto1() {
+            document.getElementById("pont1").innerHTML = add();
+        }  
+        function ponto2() {
+            document.getElementById("pont2").innerHTML = add2();
+        }   
+    </script>
+</body>
+</html>
