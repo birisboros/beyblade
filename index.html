@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Placar BeyBlade</title>
+    <title>Placar Beyblade</title>
     <link rel="icon" href="favicon.ico">
     <style>
         html{
@@ -15,7 +16,12 @@
             background-size: cover;
             background-repeat: no-repeat;
         }
-        body{
+        #resetbtn{
+            display:block;
+            margin: auto;
+           
+        }
+        #secpla{
             width: 100%;
             display:flex;
             margin: auto;
@@ -35,7 +41,7 @@
         #nome1new, #nome2new{
             background-color: rgba(0, 0, 0, 0.504);
             display: block;
-            width:20vw;
+            min-width:5vw;
             font-size: 5em;
             color: red;
             text-shadow: 2px 2px 5px orange;
@@ -94,12 +100,11 @@
             width: 10vh;
         }
         @media (max-width:1000px) {
-        html{
-            margin: 0px;
-            height: 100vh;
-            overflow: hidden;
+            #nome1, #nome2{
+            padding-top: 1em;
+            
         }
-        body{
+        #secpla{
             
             display: grid;
             align-items: center;
@@ -125,9 +130,12 @@
             margin: 5vh 0vh;
             }       
         }
+        
     </style>
 </head>
 <body>
+    <button id="resetbtn" onclick="location.reload()">RESET</button>
+<section id="secpla">
     <div id="nome1">
         <label for="nome1">Nome:</label>
         <input type="text" name="nome1" id="nome1text">
@@ -140,6 +148,7 @@
     <div class="pontos">
     <div id="pont1">0</div>
     <button onclick="ponto1()">+</button>
+    <button onclick="ponto1n()">-</button>
     </div>
     
     <div class="vs">VS</div>
@@ -147,6 +156,7 @@
     <div class="pontos">
     <div id="pont2">0</div>
     <button onclick="ponto2()">+</button>
+    <button onclick="ponto2n()">-</button>
     </div>
     </div>
 
@@ -157,17 +167,27 @@
         <input type="text" name="nome2" id="nome2text">
         <button onclick="mudaTexto2()">OK</button>
     </div>
+</section>
     
     <script>
+        let counter1 = 0;
+        let counter2 = 0;
         const add = (function () {
-        let counter = 0;
-        return function () {counter += 1; return counter;}
+        
+        return function () {counter1 += 1; return counter1;}
         })();
         const add2 = (function () {
-        let counter = 0;
-        return function () {counter += 1; return counter;}
+        
+        return function () {counter2 += 1; return counter2;}
         })();
-
+        const sub1 = (function () {
+        
+        return function () {counter1 -= 1; return counter1;}
+        })();
+        const sub2 = (function () {
+        
+        return function () {counter2 -= 1; return counter2;}
+        })();
         function mudaTexto1() {
             var nome1= document.getElementById("nome1text").value;
             var apaga1= document.getElementById("nome1").style="display:none;";
@@ -187,7 +207,14 @@
         }  
         function ponto2() {
             document.getElementById("pont2").innerHTML = add2();
-        }   
+        } 
+        function ponto1n() {
+            document.getElementById("pont1").innerHTML = sub1();
+        }
+        function ponto2n() {
+            document.getElementById("pont2").innerHTML = sub2();
+        }  
+        
     </script>
 </body>
 </html>
